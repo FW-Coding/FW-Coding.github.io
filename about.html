@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Me – Battery Tech Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0a0e27;
+      color: #f9fafb;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background gradient */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 90%, rgba(34, 211, 238, 0.08) 0%, transparent 50%);
+      z-index: -1;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 0;
+      background: rgba(10, 14, 39, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #818cf8, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a.active {
+      color: #818cf8;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #818cf8, #22d3ee);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 8rem 2rem 5rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .accent {
+      background: linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Content Sections */
+    .content-section {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      animation: fadeInUp 0.8s ease;
+      animation-fill-mode: both;
+    }
+
+    .content-section:nth-child(2) { animation-delay: 0.1s; }
+    .content-section:nth-child(3) { animation-delay: 0.2s; }
+    .content-section:nth-child(4) { animation-delay: 0.3s; }
+
+    .content-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #f9fafb;
+    }
+
+    .content-section p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-top: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #818cf8, #22d3ee);
+    }
+
+    .timeline-item {
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.8);
+    }
+
+    .timeline-item h3 {
+      font-size: 1.4rem;
+      color: #818cf8;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-date {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .timeline-item p {
+      font-size: 1rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    /* Interests Grid */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .interest-card {
+      background: rgba(129, 140, 248, 0.1);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .interest-card:hover {
+      transform: translateY(-5px);
+      background: rgba(129, 140, 248, 0.15);
+      box-shadow: 0 10px 30px rgba(129, 140, 248, 0.3);
+    }
+
+    .interest-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .interest-card h3 {
+      font-size: 1.1rem;
+      color: #f9fafb;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 3rem 2rem;
+      background: rgba(129, 140, 248, 0.1);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(129, 140, 248, 0.3);
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      background: linear-gradient(135deg, #818cf8, #6366f1);
+      color: white;
+      border: none;
+      box-shadow: 0 10px 30px rgba(129, 140, 248, 0.3);
+      margin: 0 0.5rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(129, 140, 248, 0.5);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.1);
+      color: #94a3b8;
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 0.4rem;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background: #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 14, 39, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      main {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .content-section {
+        padding: 2rem;
+      }
+
+      .timeline {
+        padding-left: 1.5rem;
+      }
+
+      .interests-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        display: block;
+        margin: 0.5rem auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">⚡ Battery Tech</a>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="page-header">
+      <h1>About <span class="accent">Me</span></h1>
+      <p class="subtitle">
+        My journey in battery technology and energy innovation
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>🔋 My Mission</h2>
+      <p>
+        I'm a passionate battery technology engineer dedicated to advancing energy storage 
+        solutions for a sustainable future. My work bridges fundamental electrochemical 
+        principles with practical engineering applications, focusing on making battery 
+        systems more efficient, reliable, and accessible.
+      </p>
+      <p>
+        With expertise spanning hardware design, software development, and data science, 
+        I take a holistic approach to battery engineering. From modeling individual 
+        electrode reactions to designing complete battery management systems, I'm driven 
+        by the challenge of pushing the boundaries of what's possible in energy storage.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>📚 Background & Experience</h2>
+      <p>
+        My fascination with battery technology began during my undergraduate studies in 
+        electrical engineering, where I was captivated by the intersection of chemistry, 
+        physics, and engineering. This led me to pursue specialized coursework and research 
+        in electrochemical systems and energy storage.
+      </p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Senior Battery Engineer</h3>
+          <div class="timeline-date">2023 - Present</div>
+          <p>
+            Leading development of next-generation battery management systems for electric 
+            vehicles. Implemented advanced state estimation algorithms and thermal management 
+            strategies that improved battery life by 20%.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Battery Systems Engineer</h3>
+          <div class="timeline-date">2021 - 2023</div>
+          <p>
+            Developed electrochemical models and validation frameworks for lithium-ion 
+            batteries. Collaborated with cross-functional teams to optimize cell design 
+            and manufacturing processes.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Research Assistant</h3>
+          <div class="timeline-date">2019 - 2021</div>
+          <p>
+            Conducted research on solid-state battery materials and interfaces. Published 
+            findings in peer-reviewed journals and presented at international conferences.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>M.Sc. in Energy Systems</h3>
+          <div class="timeline-date">2017 - 2019</div>
+          <p>
+            Focused on battery modeling, control systems, and machine learning applications 
+            in energy storage. Thesis on predictive battery degradation using neural networks.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2>💡 What Drives Me</h2>
+      <p>
+        I believe that battery technology is one of the most critical enablers of a 
+        sustainable future. Every improvement in battery performance, cost, or safety 
+        has far-reaching impacts—from enabling longer-range electric vehicles to making 
+        renewable energy more practical and reliable.
+      </p>
+      <p>
+        What excites me most is the interdisciplinary nature of this field. A breakthrough 
+        might come from better materials science, smarter algorithms, more efficient 
+        manufacturing, or innovative system design. I thrive in this complex landscape 
+        where diverse skills and perspectives converge to solve challenging problems.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>🎯 Areas of Interest</h2>
+      
+      <div class="interests-grid">
+        <div class="interest-card">
+          <div class="interest-icon">🔬</div>
+          <h3>Next-Gen Batteries</h3>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">🤖</div>
+          <h3>ML for Battery Optimization</h3>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">🌡️</div>
+          <h3>Thermal Management</h3>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">📊</div>
+          <h3>Data-Driven Insights</h3>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">♻️</div>
+          <h3>Sustainable Design</h3>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">🚗</div>
+          <h3>EV Applications</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2>🌟 Beyond Work</h2>
+      <p>
+        When I'm not deep in battery simulations or analyzing test data, I enjoy staying 
+        connected to the broader tech community. I contribute to open-source projects 
+        related to battery modeling and data analysis, and I'm always eager to share 
+        knowledge through technical writing and mentoring.
+      </p>
+      <p>
+        I'm also an avid reader of scientific literature, constantly keeping up with the 
+        latest advances in materials science, electrochemistry, and machine learning. 
+        Outside of technology, I enjoy hiking, photography, and exploring how clean 
+        energy solutions are being deployed around the world.
+      </p>
+    </div>
+
+    <div class="cta-section">
+      <h2>Let's Collaborate</h2>
+      <p>
+        I'm always interested in connecting with fellow engineers, researchers, and 
+        innovators in the energy storage space.
+      </p>
+      <a href="projects.html" class="btn">View My Projects</a>
+      <a href="contact.html" class="btn">Get in Touch</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Battery Tech Portfolio. All rights reserved.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Built with passion for energy innovation</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.querySelector('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.getElementById('navLinks');
+      
+      if (!nav.contains(event.target)) {
+        navLinks.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

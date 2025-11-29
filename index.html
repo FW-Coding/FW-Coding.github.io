@@ -536,11 +536,11 @@
         <span></span>
       </div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -561,234 +561,54 @@
       </div>
 
       <div class="hero-buttons">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        <a href="projects.html" class="btn btn-primary">View My Work</a>
+        <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Featured <span class="accent">Projects</span></h2>
+  <!-- Quick Overview Section -->
+  <section id="overview" style="padding: 4rem 2rem;">
+    <h2>What I Do</h2>
     <p class="section-subtitle">
-      A selection of my work in battery modeling, optimization, and energy systems
+      A glimpse into my work and expertise
     </p>
 
-    <div class="projects-grid">
+    <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
       <div class="project-card reveal">
         <div class="project-card-content">
           <div class="project-icon">🔋</div>
-          <h3>Li-Ion Battery Model</h3>
+          <h3>Battery Systems</h3>
           <p>
-            Developed a high-fidelity electrochemical model for lithium-ion batteries 
-            using Python and COMSOL. Achieved 95% accuracy in SOC prediction across 
-            various discharge rates.
+            From electrochemical modeling to BMS implementation, I design and optimize 
+            advanced battery systems for various applications.
           </p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">COMSOL</span>
-            <span class="tech-tag">MATLAB</span>
-            <span class="tech-tag">FEA</span>
-          </div>
+          <a href="projects.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.6rem 1.5rem; font-size: 0.9rem;">View Projects</a>
         </div>
       </div>
 
       <div class="project-card reveal">
         <div class="project-card-content">
           <div class="project-icon">⚡</div>
-          <h3>BMS Control System</h3>
+          <h3>Technical Skills</h3>
           <p>
-            Designed and implemented a Battery Management System with advanced 
-            thermal management and cell balancing algorithms for EV applications.
+            Expert in Python, MATLAB, embedded systems, and machine learning with 
+            a focus on energy storage solutions.
           </p>
-          <div class="tech-tags">
-            <span class="tech-tag">C++</span>
-            <span class="tech-tag">Embedded Systems</span>
-            <span class="tech-tag">CAN Bus</span>
-            <span class="tech-tag">State Estimation</span>
-          </div>
+          <a href="skills.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.6rem 1.5rem; font-size: 0.9rem;">See Skills</a>
         </div>
       </div>
 
       <div class="project-card reveal">
         <div class="project-card-content">
-          <div class="project-icon">📊</div>
-          <h3>Battery Degradation Analysis</h3>
+          <div class="project-icon">👨‍💻</div>
+          <h3>About Me</h3>
           <p>
-            Machine learning framework for predicting battery degradation patterns 
-            using cycling data. Enables predictive maintenance and extended battery life.
+            Learn more about my background, experience, and passion for advancing 
+            battery technology and sustainable energy.
           </p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">TensorFlow</span>
-            <span class="tech-tag">Data Analysis</span>
-            <span class="tech-tag">ML</span>
-          </div>
+          <a href="about.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.6rem 1.5rem; font-size: 0.9rem;">Read More</a>
         </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-card-content">
-          <div class="project-icon">🌐</div>
-          <h3>Energy Storage Optimizer</h3>
-          <p>
-            Web-based tool for sizing and optimizing battery energy storage systems 
-            for residential and commercial applications with renewable integration.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Optimization</span>
-            <span class="tech-tag">API</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-card-content">
-          <div class="project-icon">🔬</div>
-          <h3>Solid-State Battery Research</h3>
-          <p>
-            Experimental research on next-generation solid-state electrolytes. 
-            Characterized ionic conductivity and interfacial resistance using EIS.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">Materials Science</span>
-            <span class="tech-tag">XRD</span>
-            <span class="tech-tag">SEM</span>
-            <span class="tech-tag">EIS</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-card-content">
-          <div class="project-icon">🚗</div>
-          <h3>EV Range Prediction</h3>
-          <p>
-            Real-time range estimation algorithm considering driving patterns, 
-            terrain, temperature, and battery state for electric vehicles.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Kalman Filter</span>
-            <span class="tech-tag">IoT</span>
-            <span class="tech-tag">Cloud</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>Technical <span class="accent">Expertise</span></h2>
-    <p class="section-subtitle">
-      Core competencies in battery engineering and related technologies
-    </p>
-
-    <div class="skills-grid">
-      <div class="skill-category reveal">
-        <h3>⚡ Battery Engineering</h3>
-        <ul class="skill-list">
-          <li>Electrochemical Modeling</li>
-          <li>Battery Management Systems</li>
-          <li>Thermal Management</li>
-          <li>State Estimation (SOC/SOH)</li>
-          <li>Cell Chemistry & Design</li>
-          <li>Testing & Characterization</li>
-        </ul>
-      </div>
-
-      <div class="skill-category reveal">
-        <h3>💻 Programming & Tools</h3>
-        <ul class="skill-list">
-          <li>Python (NumPy, SciPy, Pandas)</li>
-          <li>MATLAB/Simulink</li>
-          <li>C/C++ (Embedded)</li>
-          <li>COMSOL Multiphysics</li>
-          <li>LabVIEW</li>
-          <li>Git & Version Control</li>
-        </ul>
-      </div>
-
-      <div class="skill-category reveal">
-        <h3>🤖 Data & AI</h3>
-        <ul class="skill-list">
-          <li>Machine Learning (TensorFlow, PyTorch)</li>
-          <li>Data Analysis & Visualization</li>
-          <li>Signal Processing</li>
-          <li>Optimization Algorithms</li>
-          <li>Statistical Modeling</li>
-          <li>Time-Series Forecasting</li>
-        </ul>
-      </div>
-
-      <div class="skill-category reveal">
-        <h3>🔧 Engineering Skills</h3>
-        <ul class="skill-list">
-          <li>CAD Design (SolidWorks)</li>
-          <li>Circuit Design & PCB</li>
-          <li>Test Automation</li>
-          <li>Data Acquisition Systems</li>
-          <li>Project Management</li>
-          <li>Technical Documentation</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
-    <h2>About <span class="accent">Me</span></h2>
-    <p class="section-subtitle">
-      My journey in battery technology and energy systems
-    </p>
-
-    <div class="about-content reveal">
-      <p>
-        I'm a passionate battery technology engineer with a focus on advancing 
-        energy storage solutions for a sustainable future. My work spans from 
-        fundamental electrochemical modeling to practical BMS implementation.
-      </p>
-      <p>
-        With expertise in both hardware and software, I bridge the gap between 
-        theoretical research and real-world applications. I've worked on projects 
-        ranging from electric vehicle battery systems to grid-scale energy storage.
-      </p>
-      <p>
-        Currently, I'm particularly interested in next-generation battery technologies, 
-        including solid-state batteries and advanced thermal management systems. 
-        I believe in the power of data-driven approaches to optimize battery 
-        performance and longevity.
-      </p>
-      <p>
-        When I'm not working on batteries, you'll find me contributing to open-source 
-        projects, reading the latest research papers, or exploring new optimization 
-        algorithms.
-      </p>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Let's <span class="accent">Connect</span></h2>
-    <div class="contact-content">
-      <p class="section-subtitle">
-        I'm always open to discussing new projects, collaborations, or opportunities 
-        in battery technology and energy systems.
-      </p>
-      
-      <div class="contact-buttons">
-        <a href="mailto:your.email@example.com" class="contact-btn contact-btn-primary">
-          📧 Email Me
-        </a>
-        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer" class="btn btn-secondary">
-          LinkedIn
-        </a>
-        <a href="https://github.com/your-username" target="_blank" rel="noreferrer" class="btn btn-secondary">
-          GitHub
-        </a>
       </div>
     </div>
   </section>

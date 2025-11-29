@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects – Battery Tech Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0a0e27;
+      color: #f9fafb;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 90%, rgba(34, 211, 238, 0.08) 0%, transparent 50%);
+      z-index: -1;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 0;
+      background: rgba(10, 14, 39, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #818cf8, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a.active {
+      color: #818cf8;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #818cf8, #22d3ee);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8rem 2rem 5rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .accent {
+      background: linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Filter Buttons */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .filter-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      border: 2px solid rgba(148, 163, 184, 0.3);
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(129, 140, 248, 0.2);
+      border-color: #818cf8;
+      color: #818cf8;
+      transform: translateY(-2px);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease;
+      animation-fill-mode: both;
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    .project-card:nth-child(5) { animation-delay: 0.5s; }
+    .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(34, 211, 238, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(129, 140, 248, 0.6);
+      box-shadow: 0 25px 70px rgba(129, 140, 248, 0.4);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #818cf8, #6366f1);
+      border-radius: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .project-card h3 {
+      font-size: 1.6rem;
+      color: #f9fafb;
+      line-height: 1.3;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    .project-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .project-card p {
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .project-details {
+      margin: 1.5rem 0;
+    }
+
+    .project-details h4 {
+      font-size: 1.1rem;
+      color: #22d3ee;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-details ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .project-details li {
+      padding: 0.5rem 0;
+      color: #cbd5e1;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .project-details li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #818cf8;
+      font-weight: bold;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .tech-tag {
+      padding: 0.5rem 1rem;
+      background: rgba(129, 140, 248, 0.15);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .project-link {
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      background: rgba(129, 140, 248, 0.2);
+      color: #818cf8;
+      border: 1px solid rgba(129, 140, 248, 0.4);
+    }
+
+    .project-link:hover {
+      background: rgba(129, 140, 248, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.1);
+      color: #94a3b8;
+      margin-top: 4rem;
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 0.4rem;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background: #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 14, 39, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      main {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        padding: 2rem;
+      }
+
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .filter-buttons {
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">⚡ Battery Tech</a>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="page-header">
+      <h1>My <span class="accent">Projects</span></h1>
+      <p class="subtitle">
+        A comprehensive portfolio of battery technology projects, from research to production
+      </p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="modeling">Modeling</button>
+      <button class="filter-btn" data-filter="hardware">Hardware</button>
+      <button class="filter-btn" data-filter="software">Software</button>
+      <button class="filter-btn" data-filter="research">Research</button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card" data-category="modeling software">
+        <div class="project-card-content">
+          <div class="project-header">
+            <div class="project-icon">🔋</div>
+            <div>
+              <h3>Li-Ion Battery Electrochemical Model</h3>
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <span>📅 2024</span>
+            <span>⏱️ 6 months</span>
+          </div>
+
+          <p>
+            Developed a high-fidelity pseudo-2D (P2D) electrochemical model for lithium-ion 
+            batteries using Python and COMSOL Multiphysics. The model accurately predicts 
+            battery behavior across various operating conditions.
+          </p>
+
+          <div class="project-details">
+            <h4>Key Achievements:</h4>
+            <ul>
+              <li>95% accuracy in SOC prediction across discharge rates</li>
+              <li>Validated against experimental cycling data</li>
+              <li>Reduced simulation time by 40% through optimization</li>
+              <li>Integrated thermal coupling for temperature effects</li>
+            </ul>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">COMSOL</span>
+            <span class="tech-tag">MATLAB</span>
+            <span class="tech-tag">FEA</span>
+            <span class="tech-tag">NumPy</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="project-link">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card" data-category="hardware software">
+        <div class="project-card-content">
+          <div class="project-header">
+            <div class="project-icon">⚡</div>
+            <div>
+              <h3>Advanced BMS Control System</h3>
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <span>📅 2023-2024</span>
+            <span>⏱️ 12 months</span>
+          </div>
+
+          <p>
+            Designed and implemented a comprehensive Battery Management System with 
+            state-of-the-art thermal management and cell balancing algorithms for 
+            electric vehicle applications.
+          </p>
+
+          <div class="project-details">
+            <h4>Key Features:</h4>
+            <ul>
+              <li>Real-time SOC/SOH estimation using Kalman filtering</li>
+              <li>Active and passive cell balancing strategies</li>
+              <li>Predictive thermal management system</li>
+              <li>CAN bus communication protocol</li>
+            </ul>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Embedded Systems</span>
+            <span class="tech-tag">CAN Bus</span>
+            <span class="tech-tag">State Estimation</span>
+            <span class="tech-tag">PCB Design</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="project-link">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card" data-category="software modeling">
+        <div class="project-card-content">
+          <div class="project-header">
+            <div class="project-icon">📊</div>
+            <div>
+              <h3>Battery Degradation Prediction</h3>
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <span>📅 2023</span>
+            <span>⏱️ 4 months</span>
+          </div>
+
+          <p>
+            Machine learning framework for predicting battery degradation patterns using 
+            historical cycling data. Enables predictive maintenance and extends battery 
+            operational life through optimized usage strategies.
+          </p>
+
+          <div class="project-details">
+            <h4>Technical Highlights:</h4>
+            <ul>
+              <li>LSTM neural networks for time-series forecasting</li>
+              <li>Feature engineering from voltage/current profiles</li>
+              <li>Achieved 92% accuracy in capacity fade prediction</li>
+              <li>Deployed as REST API for real-time inference</li>
+            </ul>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">ML</span>
+            <span class="tech-tag">API</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="project-link">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card" data-category="software">
+        <div class="project-card-content">
+          <div class="project-header">
+            <div class="project-icon">🌐</div>
+            <div>
+              <h3>Energy Storage Optimizer</h3>
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <span>📅 2024</span>
+            <span>⏱️ 5 months</span>
+          </div>
+
+          <p>
+            Web-based tool for sizing and optimizing battery energy storage systems for 
+            residential and commercial applications with seamless renewable energy integration.
+          </p>
+
+          <div class="project-details">
+            <h4>Features:</h4>
+            <ul>
+              <li>Interactive sizing calculator with real-time visualization</li>
+              <li>Economic analysis and ROI projections</li>
+              <li>Solar/wind integration optimization</li>
+              <li>Load profile analysis and recommendations</li>
+            </ul>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Optimization</span>
+            <span class="tech-tag">D3.js</span>
+            <span class="tech-tag">MongoDB</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="project-link">View Demo</a>
+            <a href="#" class="project-link">Documentation</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card" data-category="research">
+        <div class="project-card-content">
+          <div class="project-header">
+            <div class="project-icon">🔬</div>
+            <div>
+              <h3>Solid-State Battery Research</h3>
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <span>📅 2022-2023</span>
+            <span>⏱️ 18 months</span>
+          </div>
+
+          <p>
+            Experimental research on next-generation solid-state electrolytes for 
+            improved safety and energy density. Characterized ionic conductivity and 
+            interfacial resistance using electrochemical impedance spectroscopy.
+          </p>
+
+          <div class="project-details">
+            <h4>Research Outcomes:</h4>
+            <ul>
+              <li>Synthesized novel NASICON-type electrolyte compositions</li>
+              <li>Achieved ionic conductivity >1 mS/cm at room temperature</li>
+              <li>Published findings in Journal of Power Sources</li>
+              <li>Filed patent for interfacial modification technique</li>
+            </ul>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag">Materials Science</span>
+            <span class="tech-tag">XRD</span>
+            <span class="tech-tag">SEM</span>
+            <span class="tech-tag">EIS</span>
+            <span class="tech-tag">Lab Work</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="project-link">Read Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card" data-category="software modeling">
+        <div class="project-card-content">
+          <div class="project-header">
+            <div class="project-icon">🚗</div>
+            <div>
+              <h3>EV Range Prediction System</h3>
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <span>📅 2024</span>
+            <span>⏱️ 6 months</span>
+          </div>
+
+          <p>
+            Real-time range estimation algorithm that considers driving patterns, terrain, 
+            ambient temperature, and current battery state to provide accurate range 
+            predictions for electric vehicles.
+          </p>
+
+          <div class="project-details">
+            <h4>Implementation:</h4>
+            <ul>
+              <li>Extended Kalman Filter for state estimation</li>
+              <li>Integration with GPS and weather APIs</li>
+              <li>Driver behavior profiling and adaptation</li>
+              <li>Improved range accuracy by 35% vs baseline</li>
+            </ul>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Kalman Filter</span>
+            <span class="tech-tag">IoT</span>
+            <span class="tech-tag">AWS</span>
+            <span class="tech-tag">MQTT</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="project-link">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="project-card" data-category="hardware">
+        <div class="project-card-content">
+          <div class="project-header">
+            <div class="project-icon">🌡️</div>
+            <div>
+              <h3>Thermal Management System</h3>
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <span>📅 2023</span>
+            <span>⏱️ 8 months</span>
+          </div>
+
+          <p>
+            Designed an advanced liquid cooling system for high-performance battery packs. 
+            Includes predictive temperature control and adaptive cooling strategies to 
+            optimize performance and longevity.
+          </p>
+
+          <div class="project-details">
+            <h4>Engineering Solutions:</h4>
+            <ul>
+              <li>CFD analysis for optimal coolant flow distribution</li>
+              <li>Maintained cell temperature within ±2°C across pack</li>
+              <li>40% reduction in cooling energy consumption</li>
+              <li>Integrated with BMS for coordinated control</li>
+            </ul>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag">CFD</span>
+            <span class="tech-tag">ANSYS</span>
+            <span class="tech-tag">CAD</span>
+            <span class="tech-tag">Control Systems</span>
+            <span class="tech-tag">Hardware</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="project-link">Technical Report</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 8 -->
+      <div class="project-card" data-category="software">
+        <div class="project-card-content">
+          <div class="project-header">
+            <div class="project-icon">📈</div>
+            <div>
+              <h3>Battery Analytics Platform</h3>
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <span>📅 2023-2024</span>
+            <span>⏱️ 9 months</span>
+          </div>
+
+          <p>
+            Comprehensive data analytics platform for battery fleet management. Provides 
+            real-time monitoring, performance analytics, and predictive insights for 
+            large-scale battery deployments.
+          </p>
+
+          <div class="project-details">
+            <h4>Platform Capabilities:</h4>
+            <ul>
+              <li>Real-time monitoring dashboard for 1000+ battery packs</li>
+              <li>Automated anomaly detection and alerts</li>
+              <li>Performance benchmarking and trend analysis</li>
+              <li>Integration with existing SCADA systems</li>
+            </ul>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Grafana</span>
+            <span class="tech-tag">Docker</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="project-link">View Demo</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Battery Tech Portfolio. All rights reserved.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Built with passion for energy innovation</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    // Project filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        // Filter projects
+        projectCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'block';
+          } else {
+            const categories = card.getAttribute('data-category');
+            if (categories.includes(filter)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
