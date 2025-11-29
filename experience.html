@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience – Felix Watson</title>
+  <meta name="description" content="Work experience, research roles, and leadership positions in battery science and engineering.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="projects.html" class="nav-link">Projects</a></li>
+      <li><a href="experience.html" class="nav-link active">Experience</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Experience Section -->
+  <section class="page-section">
+    <div class="container">
+      <h1>Experience</h1>
+      <p class="intro-text">
+        Research roles, technical leadership, and community engagement spanning battery modelling, electrochemical 
+        characterisation, and energy system design.
+      </p>
+
+      <div class="experience-list">
+
+        <article class="experience-card">
+          <div class="experience-header">
+            <h2>Undergraduate Research Assistant</h2>
+            <p class="experience-meta">ESE Group, Imperial College London | 2023–2024</p>
+          </div>
+          <div class="experience-content">
+            <p>
+              Worked in the Electrochemical Science and Engineering (ESE) group at Imperial, focusing on 
+              experimental characterisation and computational modelling of commercial Li-ion cells.
+            </p>
+            <ul>
+              <li>Characterised commercial Li-ion cells using electrochemical spectroscopy techniques including EIS</li>
+              <li>Developed a complete parameter estimation pipeline achieving ~50 mV simulation error from raw cycling data</li>
+              <li>Customised particle swarm optimisation algorithm for multi-condition parameter fitting</li>
+              <li>Contributed Novonix cycler column mapping to the open-source PyProBE package</li>
+              <li>Gained extensive experience with DFN models, PyBaMM, and PyProBE workflows</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-header">
+            <h2>Battery Sub-Team Lead</h2>
+            <p class="experience-meta">Imperial Racing Green | 2023–2024</p>
+          </div>
+          <div class="experience-content">
+            <p>
+              Led the battery sub-team responsible for designing, building, and integrating bespoke battery packs 
+              for Imperial's electric race car in Formula Student competitions.
+            </p>
+            <ul>
+              <li>Led a team of five students designing and building bespoke battery packs and BMS for an electric race car</li>
+              <li>Modelled track energy requirements to determine optimal capacity and discharge rates</li>
+              <li>Performed cell selection, pack assembly (spot-welding, soldering), and system integration</li>
+              <li>Coordinated testing and validation to ensure safe, high-performance operation</li>
+              <li>Contributed to strong team performance in competition</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-header">
+            <h2>FUSE Intern</h2>
+            <p class="experience-meta">Faraday Institution | Summer 2023</p>
+          </div>
+          <div class="experience-content">
+            <p>
+              Summer internship with the FUSE (Facilities for Universal battery Science Exploration) programme, 
+              focused on extending PyBaMM's capabilities and science communication.
+            </p>
+            <ul>
+              <li>Implemented the first PyBaMM example for a complex fluid-dynamics style system using finite-volume methods</li>
+              <li>Developed custom Python scripts to extend PyBaMM's capabilities beyond standard electrochemical models</li>
+              <li>Won a Student Science Communicator award for effectively presenting technical work to non-specialists</li>
+              <li>Received best poster award at PyBaMM/FUSE event for clear and engaging visual communication</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-header">
+            <h2>Leadership & Community</h2>
+            <p class="experience-meta">Imperial College London | 2021–Present</p>
+          </div>
+          <div class="experience-content">
+            <p>
+              Active involvement in student leadership, academic representation, and extracurricular activities 
+              throughout my time at Imperial.
+            </p>
+            <ul>
+              <li><strong>Course Representative</strong> – Materials Science cohort, liaising between students and faculty on curriculum and course matters</li>
+              <li><strong>Treasurer</strong> – Student society, managing budgets, financial planning, and resource allocation</li>
+              <li><strong>Vice Captain</strong> – College rugby team, supporting team organisation, morale, and match coordination</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="year"></span> Felix Watson. Built with HTML & CSS.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
