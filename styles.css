@@ -31,35 +31,27 @@ body {
 }
 
 /* ==================== Navigation ==================== */
-header {
+.main-nav {
   background-color: var(--bg-main);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 1000;
+  padding: 1.25rem 2rem;
 }
 
-nav {
+.main-nav ul {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 1.25rem 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-brand {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
+  justify-content: center;
   gap: 2rem;
   list-style: none;
   flex-wrap: wrap;
+}
+
+.main-nav li {
+  display: inline-block;
 }
 
 .nav-link {
@@ -67,6 +59,8 @@ nav {
   text-decoration: none;
   font-size: 0.9375rem;
   transition: color 0.2s ease;
+  padding: 0.5rem 1rem;
+  display: inline-block;
 }
 
 .nav-link:hover {
@@ -84,6 +78,12 @@ main {
   margin: 0 auto;
   padding: 4rem 2rem;
   min-height: calc(100vh - 200px);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 /* ==================== Typography ==================== */
@@ -117,8 +117,11 @@ p {
 
 /* ==================== Hero Section (Home) ==================== */
 .hero {
-  padding: 4rem 0 6rem;
-  max-width: 700px;
+  padding: 4rem 2rem 6rem;
+}
+
+.hero .container {
+  max-width: 800px;
 }
 
 .hero-label {
@@ -146,7 +149,7 @@ p {
   margin: 1.5rem 0;
 }
 
-.cta-buttons {
+.hero-buttons {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
@@ -186,7 +189,8 @@ p {
 
 /* ==================== Quick Links Section ==================== */
 .quick-links {
-  margin-top: 6rem;
+  padding: 4rem 2rem;
+  background-color: var(--bg-secondary);
 }
 
 .quick-links h2 {
@@ -194,36 +198,41 @@ p {
   margin-bottom: 3rem;
 }
 
-.links-grid {
+.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.link-card {
-  background-color: var(--bg-secondary);
+.card {
+  background-color: var(--bg-main);
   border: 1px solid var(--border);
   border-radius: 0.5rem;
   padding: 2rem;
   text-decoration: none;
   transition: all 0.2s ease;
+  display: block;
 }
 
-.link-card:hover {
+.card:hover {
   border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--shadow);
 }
 
-.link-card h3 {
+.card h3 {
   color: var(--text-primary);
   margin-bottom: 0.75rem;
+  font-size: 1.25rem;
 }
 
-.link-card p {
+.card p {
   color: var(--text-secondary);
   font-size: 0.9375rem;
   margin-bottom: 0;
+  line-height: 1.6;
 }
 
 /* ==================== Page Intro ==================== */
@@ -278,6 +287,114 @@ p {
   border-radius: 999px;
   font-size: 0.8125rem;
   color: var(--text-secondary);
+}
+
+/* ==================== Project Image Grid ==================== */
+.projects-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-image-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  aspect-ratio: 4 / 3;
+  display: block;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.project-image-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 2rem 1.5rem 1.5rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.project-image-card:hover .project-image-overlay {
+  background: linear-gradient(to top, rgba(79, 70, 229, 0.9), rgba(79, 70, 229, 0.7));
+}
+
+.project-image-overlay h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+/* ==================== Project Detail Page ==================== */
+.project-detail {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.project-detail h1 {
+  margin-bottom: 1rem;
+}
+
+.project-detail .project-meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-detail img {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
+
+.project-detail p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.project-detail h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.project-detail ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.project-detail li {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9375rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
 }
 
 /* ==================== Experience Items ==================== */
