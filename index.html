@@ -1,79 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Battery Tech Engineer – Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felix Watson – Battery Modelling & Energy Systems</title>
+  <meta name="description" content="MEng Materials Science student at Imperial College London specialising in battery modelling, lithium plating, and electrochemical diagnostics.">
   <style>
+    /* ==================== CSS Variables ==================== */
+    :root {
+      --bg-dark: #0a0e27;
+      --bg-card: #1a1f3a;
+      --text-primary: #e5e7eb;
+      --text-secondary: #9ca3af;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --border: rgba(99, 102, 241, 0.2);
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    /* ==================== Reset & Base ==================== */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0a0e27;
-      color: #f9fafb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
       line-height: 1.6;
-      overflow-x: hidden;
+      font-size: 16px;
     }
 
-    /* Animated background gradient */
-    body::before {
-      content: '';
+    /* ==================== Navigation ==================== */
+    header {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 40% 90%, rgba(34, 211, 238, 0.08) 0%, transparent 50%);
-      z-index: -1;
-      animation: gradientShift 15s ease infinite;
-    }
-
-    @keyframes gradientShift {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 1.5rem 0;
-      background: rgba(10, 14, 39, 0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      right: 0;
+      background-color: rgba(10, 14, 39, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
       z-index: 1000;
-      transition: all 0.3s ease;
     }
 
-    nav.scrolled {
-      padding: 1rem 0;
-      background: rgba(10, 14, 39, 0.95);
-    }
-
-    .nav-container {
+    nav {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo {
-      font-size: 1.3rem;
+    .nav-brand {
+      font-size: 1.25rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #818cf8, #22d3ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--accent);
+      text-decoration: none;
     }
 
     .nav-links {
@@ -83,590 +72,679 @@
     }
 
     .nav-links a {
-      color: #e5e7eb;
+      color: var(--text-primary);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-weight: 500;
       transition: color 0.3s ease;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #818cf8, #22d3ee);
-      transition: width 0.3s ease;
     }
 
     .nav-links a:hover {
-      color: #818cf8;
+      color: var(--accent);
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
+    /* ==================== Main Container ==================== */
+    main {
+      padding-top: 4rem;
     }
 
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6rem 2rem 4rem;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 1200px;
-      width: 100%;
-      text-align: center;
-      animation: fadeInUp 1s ease;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .tagline {
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 0.85rem;
-      color: #22d3ee;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      font-weight: 800;
-    }
-
-    .accent {
-      background: linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-description {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      color: #cbd5e1;
-      line-height: 1.8;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 999px;
-      background: rgba(34, 211, 238, 0.1);
-      border: 1px solid rgba(34, 211, 238, 0.3);
-      font-size: 0.9rem;
-      color: #22d3ee;
-      margin: 1.5rem 0;
-      animation: pulse 2s ease infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
-      50% { box-shadow: 0 0 30px rgba(34, 211, 238, 0.5); }
-    }
-
-    .pill-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22d3ee;
-      box-shadow: 0 0 12px rgba(34, 211, 238, 0.9);
-      animation: blink 1.5s ease infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2.5rem;
-    }
-
-    .btn {
-      padding: 0.9rem 2rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #818cf8, #6366f1);
-      color: white;
-      border: none;
-      box-shadow: 0 10px 30px rgba(129, 140, 248, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(129, 140, 248, 0.5);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: #e5e7eb;
-      border: 2px solid rgba(148, 163, 184, 0.4);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(148, 163, 184, 0.1);
-      border-color: #818cf8;
-      transform: translateY(-2px);
-    }
-
-    /* Section Styling */
     section {
-      padding: 5rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 4rem 2rem;
     }
 
-    h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 1rem;
-      text-align: center;
+    h1, h2, h3 {
+      line-height: 1.2;
       font-weight: 700;
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: #94a3b8;
-      font-size: 1.1rem;
-      margin-bottom: 4rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
     }
 
-    /* Projects Grid */
+    /* ==================== Hero Section ==================== */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-label {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.875rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: rgba(99, 102, 241, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .hero-cta:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ==================== About Section ==================== */
+    #about {
+      background-color: rgba(26, 31, 58, 0.3);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-text {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+    }
+
+    .snapshot-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .snapshot-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .snapshot-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .snapshot-item strong {
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .snapshot-item span {
+      color: var(--text-secondary);
+    }
+
+    /* ==================== Projects Section ==================== */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 3rem;
     }
 
     .project-card {
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 1.5rem;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
       padding: 2rem;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(34, 211, 238, 0.1));
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(129, 140, 248, 0.5);
-      box-shadow: 0 20px 60px rgba(129, 140, 248, 0.3);
-    }
-
-    .project-card:hover::before {
-      opacity: 1;
-    }
-
-    .project-card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .project-icon {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #818cf8, #6366f1);
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--shadow);
+      border-color: var(--accent);
     }
 
     .project-card h3 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      color: #f9fafb;
+      color: var(--text-primary);
     }
 
     .project-card p {
-      color: #cbd5e1;
-      line-height: 1.7;
+      color: var(--text-secondary);
       margin-bottom: 1.5rem;
+      line-height: 1.7;
     }
 
-    .tech-tags {
+    .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 1rem;
     }
 
-    .tech-tag {
-      padding: 0.4rem 0.8rem;
-      background: rgba(129, 140, 248, 0.15);
-      border: 1px solid rgba(129, 140, 248, 0.3);
+    .tag {
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(99, 102, 241, 0.15);
+      border: 1px solid var(--border);
       border-radius: 999px;
-      font-size: 0.8rem;
-      color: #a5b4fc;
+      font-size: 0.75rem;
+      color: var(--accent);
     }
 
-    /* Skills Section */
+    /* ==================== Experience Section ==================== */
+    #experience {
+      background-color: rgba(26, 31, 58, 0.3);
+    }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .experience-item {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 2rem;
+    }
+
+    .experience-header {
+      margin-bottom: 1rem;
+    }
+
+    .experience-header h3 {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .experience-meta {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .experience-item ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .experience-item li {
+      color: var(--text-secondary);
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+      line-height: 1.7;
+    }
+
+    .experience-item li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* ==================== Skills Section ==================== */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 3rem;
     }
 
-    .skill-category {
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 1.5rem;
+    .skills-category {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
       padding: 2rem;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      transition: all 0.3s ease;
     }
 
-    .skill-category:hover {
-      border-color: rgba(34, 211, 238, 0.5);
-      transform: translateY(-4px);
+    .skills-category h3 {
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
 
-    .skill-category h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      color: #22d3ee;
-    }
-
-    .skill-list {
+    .skills-category ul {
       list-style: none;
+      padding: 0;
     }
 
-    .skill-list li {
-      padding: 0.6rem 0;
-      color: #cbd5e1;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    .skills-category li {
+      color: var(--text-secondary);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
     }
 
-    .skill-list li:last-child {
+    .skills-category li:last-child {
       border-bottom: none;
     }
 
-    /* About Section */
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 1.5rem;
-      padding: 3rem;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .about-content p {
-      font-size: 1.1rem;
-      color: #cbd5e1;
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
-    }
-
-    /* Contact Section */
-    .contact-content {
+    /* ==================== Contact Section ==================== */
+    #contact {
+      background-color: rgba(26, 31, 58, 0.3);
       text-align: center;
+    }
+
+    .contact-content {
       max-width: 600px;
       margin: 0 auto;
     }
 
-    .contact-buttons {
+    .contact-content p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
       display: flex;
-      gap: 1.5rem;
       justify-content: center;
+      gap: 1.5rem;
       flex-wrap: wrap;
-      margin-top: 2.5rem;
     }
 
-    .contact-btn {
-      padding: 1rem 2.5rem;
-      border-radius: 999px;
+    .contact-link {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
       text-decoration: none;
-      font-size: 1.1rem;
+      border-radius: 0.5rem;
       font-weight: 600;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     }
 
-    .contact-btn-primary {
-      background: linear-gradient(135deg, #22d3ee, #06b6d4);
-      color: white;
-      box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3);
+    .contact-link:hover {
+      background-color: rgba(99, 102, 241, 0.1);
+      border-color: var(--accent);
+      transform: translateY(-2px);
     }
 
-    .contact-btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(34, 211, 238, 0.5);
-    }
-
-    /* Footer */
+    /* ==================== Footer ==================== */
     footer {
       text-align: center;
-      padding: 3rem 2rem;
-      border-top: 1px solid rgba(148, 163, 184, 0.1);
-      color: #94a3b8;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
     }
 
-    /* Mobile Menu Toggle */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 0.4rem;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 2px;
-      background: #e5e7eb;
-      transition: all 0.3s ease;
-    }
-
-    /* Responsive Design */
+    /* ==================== Responsive Design ==================== */
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(10, 14, 39, 0.98);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        border-top: 1px solid rgba(148, 163, 184, 0.1);
+        gap: 1rem;
       }
 
-      .nav-links.active {
-        display: flex;
+      section {
+        padding: 3rem 1.5rem;
       }
 
-      .menu-toggle {
-        display: flex;
-      }
-
-      .hero {
-        padding: 5rem 1.5rem 3rem;
+      h2 {
+        font-size: 2rem;
       }
 
       .projects-grid,
       .skills-grid {
         grid-template-columns: 1fr;
       }
-
-      .about-content {
-        padding: 2rem;
-      }
-
-      section {
-        padding: 3rem 1.5rem;
-      }
     }
 
-    /* Scroll reveal animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
+    @media (max-width: 480px) {
+      .nav-links {
+        font-size: 0.875rem;
+        gap: 0.75rem;
+      }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .contact-links {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <div class="logo">⚡ Battery Tech</div>
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+
+  <!-- ==================== Header & Navigation ==================== -->
+  <header>
+    <nav>
+      <a href="#home" class="nav-brand">FW</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="tagline">Battery Technology Engineer</div>
-      <h1>Powering the <span class="accent">Future</span> of Energy Storage</h1>
-      <p class="hero-description">
-        I design and optimize advanced battery systems, bridging cutting-edge research 
-        with real-world applications in electric mobility and renewable energy storage.
-      </p>
-      
-      <div class="pill">
-        <span class="pill-dot"></span>
-        <span>Open to opportunities & collaborations</span>
+  <!-- ==================== Main Content ==================== -->
+  <main>
+
+    <!-- Hero Section -->
+    <section id="home">
+      <div class="hero-label">Battery Modelling & Energy Systems</div>
+      <h1 class="hero-title">Building models and tools for the next generation of batteries</h1>
+      <div class="hero-description">
+        <p>
+          I'm Felix Watson, an MEng Materials Science and Engineering student at Imperial College London 
+          (graduating 2026), currently on exchange at MIT in Materials Science. My work focuses on battery 
+          modelling, lithium plating diagnostics, and electrochemical characterisation—combining physics-based 
+          models with experimental data to solve practical battery challenges.
+        </p>
+        <p>
+          With first-class academic performance and hands-on experience in parameter estimation, EIS analysis, 
+          and battery pack design, I'm passionate about advancing energy storage technology through rigorous 
+          modelling and simulation.
+        </p>
       </div>
+      <div class="status-badge">Open to roles in battery modelling, simulation & energy tech</div>
+      <a href="#projects" class="hero-cta">View Projects</a>
+    </section>
 
-      <div class="hero-buttons">
-        <a href="projects.html" class="btn btn-primary">View My Work</a>
-        <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick Overview Section -->
-  <section id="overview" style="padding: 4rem 2rem;">
-    <h2>What I Do</h2>
-    <p class="section-subtitle">
-      A glimpse into my work and expertise
-    </p>
-
-    <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-      <div class="project-card reveal">
-        <div class="project-card-content">
-          <div class="project-icon">🔋</div>
-          <h3>Battery Systems</h3>
+    <!-- About Section -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="about-content">
+        <div class="about-text">
           <p>
-            From electrochemical modeling to BMS implementation, I design and optimize 
-            advanced battery systems for various applications.
+            My journey into battery science started at Imperial College London, where I quickly gravitated 
+            toward the intersection of materials science, electrochemistry, and computational modelling. 
+            From my first-year introduction to energy materials, I've pursued almost every opportunity to 
+            work on batteries—from building race car battery packs to developing sophisticated parameter 
+            estimation pipelines.
           </p>
-          <a href="projects.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.6rem 1.5rem; font-size: 0.9rem;">View Projects</a>
+          <p>
+            Currently completing my master's thesis on transmission line models for lithium plating detection, 
+            I'm spending this year on exchange at MIT, deepening my understanding of electrochemical systems 
+            and advanced diagnostic techniques. I've been fortunate to work with leading research groups, 
+            contribute to open-source battery modelling tools, and present my work at national conferences.
+          </p>
+          <p>
+            Beyond research, I've led technical teams, mentored peers as a course representative, and developed 
+            strong skills in technical communication—whether explaining complex models to researchers or 
+            presenting battery pack designs to engineering judges.
+          </p>
+        </div>
+
+        <div class="snapshot-card">
+          <h3>Quick Facts</h3>
+          <div class="snapshot-grid">
+            <div class="snapshot-item">
+              <strong>Degree</strong>
+              <span>MEng Materials Science & Engineering, Imperial College London</span>
+            </div>
+            <div class="snapshot-item">
+              <strong>Current</strong>
+              <span>Exchange student at MIT, Materials Science</span>
+            </div>
+            <div class="snapshot-item">
+              <strong>Academic Standing</strong>
+              <span>First-class honours, Dean's List, scholarship recipient</span>
+            </div>
+            <div class="snapshot-item">
+              <strong>Master's Thesis</strong>
+              <span>Transmission line models for lithium plating detection</span>
+            </div>
+            <div class="snapshot-item">
+              <strong>Key Interests</strong>
+              <span>Battery modelling, EIS diagnostics, parameter estimation, DFN models</span>
+            </div>
+            <div class="snapshot-item">
+              <strong>Location</strong>
+              <span>London, UK</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="project-card reveal">
-        <div class="project-card-content">
-          <div class="project-icon">⚡</div>
-          <h3>Technical Skills</h3>
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <h3>Transmission Line Models for Lithium Plating</h3>
           <p>
-            Expert in Python, MATLAB, embedded systems, and machine learning with 
-            a focus on energy storage solutions.
+            Developing a novel transmission line architecture to model and detect lithium plating on graphite 
+            anodes. Combines EIS data, custom DRT inversion, and AFM measurements to quantify plating severity 
+            and validate model predictions. Work conducted in collaboration with the Bazant group and Imperial's 
+            ESE group.
           </p>
-          <a href="skills.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.6rem 1.5rem; font-size: 0.9rem;">See Skills</a>
+          <div class="project-tags">
+            <span class="tag">TL Models</span>
+            <span class="tag">Lithium Plating</span>
+            <span class="tag">EIS</span>
+            <span class="tag">DRT</span>
+            <span class="tag">AFM</span>
+            <span class="tag">Python</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Parameter Estimation Pipeline</h3>
+          <p>
+            Built a complete parameter estimation workflow from raw cycling data to validated DFN simulations, 
+            achieving ~50 mV error. Customised particle swarm optimisation to fit parameters across multiple 
+            operating conditions and contributed column mapping for the Novonix cycler to the PyProBE package.
+          </p>
+          <div class="project-tags">
+            <span class="tag">PyBaMM</span>
+            <span class="tag">PyProBE</span>
+            <span class="tag">PSO</span>
+            <span class="tag">DFN</span>
+            <span class="tag">Parameter Estimation</span>
+            <span class="tag">Python</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Electric Race Car Battery Packs</h3>
+          <p>
+            Led a team of five designing and building bespoke battery packs and BMS for Imperial Racing Green's 
+            electric race car. Modelled track conditions to determine capacity and current requirements, performed 
+            cell selection, pack assembly (spot-welding, soldering), and system integration. Team achieved strong 
+            competition performance.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Battery Pack Design</span>
+            <span class="tag">BMS</span>
+            <span class="tag">Team Leadership</span>
+            <span class="tag">Cell Selection</span>
+            <span class="tag">Integration</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Finite-Volume PyBaMM Implementation</h3>
+          <p>
+            Implemented the first example of PyBaMM applied to a complex fluid-dynamics style system using a 
+            finite-volume method in Python. Won a Student Science Communicator award and best poster prize at 
+            a PyBaMM/FUSE event for effectively presenting this work to diverse audiences.
+          </p>
+          <div class="project-tags">
+            <span class="tag">PyBaMM</span>
+            <span class="tag">Finite Volume</span>
+            <span class="tag">Python</span>
+            <span class="tag">Fluid Dynamics</span>
+            <span class="tag">Science Communication</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="experience-list">
+
+        <article class="experience-item">
+          <div class="experience-header">
+            <h3>Undergraduate Research Assistant</h3>
+            <p class="experience-meta">ESE Group, Imperial College London | 2023–2024</p>
+          </div>
+          <ul>
+            <li>Characterised commercial Li-ion cells using electrochemical spectroscopy techniques including EIS</li>
+            <li>Developed a complete parameter estimation pipeline achieving ~50 mV simulation error from raw cycling data</li>
+            <li>Customised particle swarm optimisation algorithm for multi-condition parameter fitting</li>
+            <li>Contributed Novonix cycler column mapping to the open-source PyProBE package</li>
+            <li>Gained extensive experience with DFN models, PyBaMM, and PyProBE workflows</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-header">
+            <h3>Battery Sub-Team Lead</h3>
+            <p class="experience-meta">Imperial Racing Green | 2023–2024</p>
+          </div>
+          <ul>
+            <li>Led a team of five students designing and building bespoke battery packs and BMS for an electric race car</li>
+            <li>Modelled track energy requirements to determine optimal capacity and discharge rates</li>
+            <li>Performed cell selection, pack assembly (spot-welding, soldering), and system integration</li>
+            <li>Coordinated testing and validation to ensure safe, high-performance operation</li>
+            <li>Contributed to strong team performance in competition</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-header">
+            <h3>FUSE Intern</h3>
+            <p class="experience-meta">Faraday Institution | Summer 2023</p>
+          </div>
+          <ul>
+            <li>Implemented the first PyBaMM example for a complex fluid-dynamics style system using finite-volume methods</li>
+            <li>Developed custom Python scripts to extend PyBaMM's capabilities beyond standard electrochemical models</li>
+            <li>Won a Student Science Communicator award for effectively presenting technical work to non-specialists</li>
+            <li>Received best poster award at PyBaMM/FUSE event for clear and engaging visual communication</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-header">
+            <h3>Leadership & Community</h3>
+            <p class="experience-meta">Imperial College London | 2021–Present</p>
+          </div>
+          <ul>
+            <li>Course Representative for Materials Science cohort, liaising between students and faculty</li>
+            <li>Treasurer for a student society, managing budgets and financial planning</li>
+            <li>Vice Captain of college rugby team, supporting team organisation and morale</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+
+        <div class="skills-category">
+          <h3>Battery & Modelling</h3>
+          <ul>
+            <li>Doyle-Fuller-Newman (DFN) models</li>
+            <li>Equivalent circuit models (ECM)</li>
+            <li>Lithium plating detection & modelling</li>
+            <li>Electrochemical impedance spectroscopy (EIS)</li>
+            <li>Distribution of relaxation times (DRT)</li>
+            <li>State-of-health (SOH) estimation</li>
+            <li>Battery degradation mechanisms</li>
+            <li>Parameter estimation & optimisation</li>
+            <li>Numerical methods & solvers</li>
+          </ul>
+        </div>
+
+        <div class="skills-category">
+          <h3>Programming & Tools</h3>
+          <ul>
+            <li>Python (PyBaMM, PyProBE, PyBOP)</li>
+            <li>NumPy, SciPy, Matplotlib</li>
+            <li>PyTorch (machine learning)</li>
+            <li>MATLAB</li>
+            <li>COMSOL Multiphysics</li>
+            <li>Git & version control</li>
+            <li>Technical writing & documentation</li>
+            <li>Presenting to technical & non-technical audiences</li>
+            <li>Team leadership & project management</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-content">
+        <p>
+          I'm always open to discussing new opportunities, research collaborations, or projects in battery 
+          modelling and energy systems. Feel free to get in touch!
+        </p>
+        <div class="contact-links">
+          <a href="mailto:felixwatson1@outlook.com" class="contact-link">Email Me</a>
+          <a href="https://www.linkedin.com/in/felix-r-watson" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+          <!-- Uncomment and update when CV is available:
+          <a href="cv.pdf" class="contact-link">Download CV</a>
+          -->
         </div>
       </div>
+    </section>
 
-      <div class="project-card reveal">
-        <div class="project-card-content">
-          <div class="project-icon">👨‍💻</div>
-          <h3>About Me</h3>
-          <p>
-            Learn more about my background, experience, and passion for advancing 
-            battery technology and sustainable energy.
-          </p>
-          <a href="about.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.6rem 1.5rem; font-size: 0.9rem;">Read More</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
+  <!-- ==================== Footer ==================== -->
   <footer>
-    <p>&copy; 2025 Battery Tech Portfolio. All rights reserved.</p>
-    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Built with passion for energy innovation</p>
+    <p>&copy; <span id="year"></span> Felix Watson. Built with HTML & CSS.</p>
   </footer>
 
   <script>
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // Mobile menu toggle
-    function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('active');
-    }
-
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-          // Close mobile menu if open
-          document.getElementById('navLinks').classList.remove('active');
-        }
-      });
-    });
-
-    // Scroll reveal animation
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
