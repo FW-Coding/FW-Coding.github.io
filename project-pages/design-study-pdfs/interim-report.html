@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interim Report – Design Studio Project</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="../../index.html" class="nav-link">Home</a></li>
+      <li><a href="../../projects.html" class="nav-link active">Projects</a></li>
+      <li><a href="../../experience.html" class="nav-link">Experience</a></li>
+      <li><a href="../../about.html" class="nav-link">About</a></li>
+      <li><a href="../../contact.html" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PDF Viewer -->
+  <section class="page-section">
+    <div class="container">
+      <a href="../project-Design-study-2.html" class="back-link">← Back to Project</a>
+      
+      <h1>Interim Report</h1>
+      <p class="intro-text">Grade: 80% | Materials characterisation and redesign concepts</p>
+
+      <div class="pdf-container">
+        <iframe src="../../pdfs/interim-report.pdf" type="application/pdf"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="year"></span> Felix Watson. Built with HTML & CSS.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
